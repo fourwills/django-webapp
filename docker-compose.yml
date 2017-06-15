@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  web:
+    restart: always
+    build:  # configuration options applied at build time
+      context: ./web
+      dockerfile: ./Dockerfile
+    volumes:
+      - /usr/src/app/static # use as our static dir 
+      - ./web:/web
+    ports:
+      - "8000:8000"
+    #command: tail -f /dev/null  # override Dockerfile cmd, keep container up so not an automatic exit
+    command: sh /web/scripts/post-run-uwsgi.sh  # run uwsgi script
+
+   
