@@ -7,11 +7,16 @@ services:
       context: ./web
       dockerfile: ./Dockerfile
     volumes:
-      - /usr/src/app/static # use as our static dir 
       - ./web:/web
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     #command: tail -f /dev/null  # override Dockerfile cmd, keep container up so not an automatic exit
     command: sh /web/scripts/post-run-uwsgi.sh  # run uwsgi script
 
-   
+  nginx:
+    restart: always
+    build:
+      context: ./nginx/
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
