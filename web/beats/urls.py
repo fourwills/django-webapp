@@ -20,5 +20,9 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include([
+        url(r'^v1/tracks/',
+            include('beats.apps.tracks.api.v1.urls', namespace='tracks'))],
+                          namespace='api')),
     url(r'^', include('beats.apps.tracks.urls', namespace='tracks')),
 ]
