@@ -8,7 +8,7 @@ class Genre(models.Model):
     """ Model for Genre data"""
     # Genre Choices
     # First value represents how its stored in db
-    # Second value is what is human readable version 
+    # Second value represents human readable text
     GENRE_CHOICES = (
         ('unknown', 'Unknown'),
         ('house', 'House'),
