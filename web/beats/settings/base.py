@@ -11,10 +11,19 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from os.path import abspath, dirname, join
+from sys import path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# e.g. GitHub/beats/web, where 'manage.py' lives
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
+# absolute path to the Django project, same level as 'settings' dir, urls.py, wsgi.py
+# e.g. GitHub/beats/web/beats
+PROJECT_ROOT = dirname(dirname(abspath(__file__)))
+
+# Add the 'apps' dir to the project path
+path.append(join(PROJECT_ROOT, 'apps/'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
