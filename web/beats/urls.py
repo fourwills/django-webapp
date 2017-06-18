@@ -16,7 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import url, include
+from django.conf import settings
+from django.conf.urls.static import static
+from rest_framework_swagger.views import get_swagger_view
 
+api_schema_view = get_swagger_view(title='API')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,5 +28,9 @@ urlpatterns = [
         url(r'^v1/tracks/',
             include('beats.apps.tracks.api.v1.urls', namespace='tracks'))],
                           namespace='api')),
+    url(r'^api/', api_schema_view),
     url(r'^', include('beats.apps.tracks.urls', namespace='tracks')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
