@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
-api_schema_view = get_swagger_view(title='API')
+api_schema_view = get_swagger_view(title='API by Swagger')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,6 +30,7 @@ urlpatterns = [
             include('beats.apps.tracks.api.v1.urls', namespace='tracks'))],
                           namespace='api')),
     url(r'^api/', api_schema_view),
+    url(r'^docs/', include_docs_urls(title='API by DRF')),
     url(r'^', include('beats.apps.tracks.urls', namespace='tracks')),
 ]
 
