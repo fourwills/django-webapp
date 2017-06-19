@@ -18,5 +18,9 @@ services:
     build:
       context: ./nginx/
       dockerfile: ./Dockerfile
+    links:
+      - web
+    volumes:
+      - ./web/:/web
     ports:
       - "80:80"
