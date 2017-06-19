@@ -49,7 +49,7 @@ To verify your file saved under `/var/bp/uploads`:
 
 ### API Endpoint 2 -  GET /api/v1/tracks/list
 
-The second API endpoint returns a list of tracks with their track names.
+The second API endpoint returns a list of tracks with their track names. The data is from the Beatport API.
 
 #### Testing API Endpoint 2
 
@@ -57,7 +57,7 @@ Test with `curl 127.0.0.1/api/v1/tracks/list` and receive a 200 response with na
 
 ### API Endpoint 3 - GET /api/v1/tracks/<pk>
 
-The third API endpoint returns a specifc Track and shows additional information (more than just 'name')
+The third API endpoint returns a specifc Track and shows additional information (more than just 'name') from the Beatport API.
 
 #### Testing API Endpoint 3
 
@@ -65,4 +65,4 @@ Test with `curl 127.0.0.1/api/v1/tracks/8650404/` and receive a 200 with details
 
 ## Unit Tests
 
-To run unit tests, run `python manage.py test`.* 
+To run unit tests, run `python manage.py test`
