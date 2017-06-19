@@ -22,7 +22,7 @@ class TrackListAPI(APIView):
         OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
     tracks_url = 'https://oauth-api.beatport.com/catalog/3/tracks'
 
-    def get(self):
+    def get(self, request, *args, **kwargs):
         """ GET list of Tracks returning only the name """
         bp_response = requests.get(self.tracks_url, auth=self.auth)
         full_results = bp_response.json()['results']
