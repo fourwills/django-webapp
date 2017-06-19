@@ -45,4 +45,3 @@ class Command(BaseCommand):
                 json.dump(json_data, outfile)
                 time.sleep(5)  # don't slam server w/ requests
         print("Completed scraping tracks, results are in: " + scraped_results_file)
-        

@@ -14,13 +14,16 @@ class GenreSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
         read_only = 'id'
 
+
 class TrackSerializer(serializers.ModelSerializer):
     """ Serializer for generic Model Track data """
 
     class Meta:
         """ Meta Track Serializer """
         model = Track
-        fields = ('id', 'title', 'genre', 'release_date', 'is_purchasable', 'purchase_price')
+        fields = (
+            'id', 'title', 'genre', 'release_date', 'is_purchasable',
+            'purchase_price')
 
 
 class TrackDetailSerializer(serializers.ModelSerializer):
