@@ -108,6 +108,7 @@ class FileUploadTestCase(APITestCase):
         url = reverse('api:tracks:track-upload')
         response = self.client.put(url)
         self.assertEqual(response.status_code, 400)
+        self.assertEqual(FileUpload.objects.all().count(), 0)
     
     def test_put_valid_data(self):
         url = reverse('api:tracks:track-upload')
@@ -115,4 +116,8 @@ class FileUploadTestCase(APITestCase):
             response = self.client.put(
                 url, data={'doc': docfile, 'name':'hello3.txt'}, format='multipart')
         self.assertEqual(response.status_code, 202)
+        self.assertEqual(FileUpload.objects.all().count(), 1)
+        file_obj = FileUpload.objects.first()
+        self.assertEqual(file_obj.name, 'hello.txt')
+        self.assertEqual(file_obj.size, 29)
         
