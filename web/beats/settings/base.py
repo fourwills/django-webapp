@@ -32,7 +32,8 @@ path.append(join(PROJECT_ROOT, 'apps/'))
 SECRET_KEY = 'h9v)-dt$mf&b7nsv5qrt3b08-%c16+&z-ezd5a(jv1!cq4_!%_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 

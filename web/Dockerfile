@@ -8,4 +8,6 @@ RUN pip3 install -r requirements.txt
 RUN mkdir -p /var/bp/uploads
 COPY . /web
 RUN python3 /web/manage.py collectstatic --noinput
+RUN python3 /web/manage.py makemigrations --noinput
+RUN python3 /web/manage.py migrate --noinput
 EXPOSE 8000
