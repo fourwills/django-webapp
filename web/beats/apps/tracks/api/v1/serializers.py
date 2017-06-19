@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from ...models import Genre, Track
+from ...models import Genre, Track, FileUpload
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -33,3 +33,12 @@ class TrackDetailSerializer(serializers.ModelSerializer):
             'id', 'title', 'genre', 'release_date', 'is_purchasable',
             'purchase_price', 'is_available_for_mix', 'is_active',
             'date_created', 'date_updated')
+
+
+class FileUploadSerializer(serializers.ModelSerializer):
+    """ Serializer for Model Track File """
+
+    class Meta:
+        """ Meta Track File Serializer """
+        model = FileUpload
+        fields = ('name', 'doc', 'size')

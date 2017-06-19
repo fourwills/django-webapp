@@ -2,6 +2,7 @@
 Models for Tracks and Genre data
 """
 from django.db import models
+from django.conf import settings
 
 
 class Genre(models.Model):
@@ -23,7 +24,7 @@ class Genre(models.Model):
     @property
     def is_cool(self):
         """ Returns whether genre is cool or not """
-        if self.name == 2:
+        if self.name == 'house':
             return True
         return False
 
@@ -42,3 +43,16 @@ class Track(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class FileUpload(models.Model):
+    """ Model for Uploaded Files """
+    date_created = models.DateTimeField(auto_now=False, auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    name = models.CharField(max_length=255, blank=True)
+    doc = models.FileField()
+    size = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    

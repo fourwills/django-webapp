@@ -6,6 +6,8 @@ services:
     build:  # configuration options applied at build time
       context: ./web
       dockerfile: ./Dockerfile
+    environment:
+      DEBUG: 0
     volumes:
       - ./web:/web
     expose:
