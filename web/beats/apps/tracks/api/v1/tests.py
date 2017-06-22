@@ -1,6 +1,4 @@
 """ Unit Tests for Tracks API """
-import json
-
 from django.core.urlresolvers import reverse
 from rest_framework.test import APIClient, APITestCase
 
@@ -19,13 +17,12 @@ class TracksListTestCase(APITestCase):
         url = reverse('api:tracks:track-list')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        data = json.loads(response.data)
 
-        self.assertGreater(len(data), 0)
-        get_key = data[0].get('name', None)
+        self.assertGreater(len(response.data), 0)
+        get_key = response.data[0].get('name', None)
         self.assertIsNotNone(get_key)
-        self.assertRaises(KeyError, lambda: data[0]['sku'])
-        self.assertRaises(KeyError, lambda: data[0]['purchasable'])
+        self.assertRaises(KeyError, lambda: response.data[0]['sku'])
+        self.assertRaises(KeyError, lambda: response.data[0]['purchasable'])
 
 
 class TracksDetailTestCase(APITestCase):
@@ -40,7 +37,7 @@ class TracksDetailTestCase(APITestCase):
         url = reverse('api:tracks:track-detail', kwargs={'pk': nonexistent_pk})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
-        self.assertEqual(response.json(), [])
+        self.assertEqual(response.data, [])
 
     def test_track_by_existing_pk(self):
         """ Track found should return 200 with details """

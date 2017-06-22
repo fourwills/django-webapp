@@ -47,13 +47,13 @@ To verify your file saved under `/var/bp/uploads`:
 * `python3 /web/manage.py shell_plus` to enter shell, then run `FileUpload.objects.all()` to find your file name
 * `exit` out of the docker container when done
 
-### API Endpoint 2 -  GET /api/v1/tracks/list
+### API Endpoint 2 -  GET /api/v1/tracks/
 
 The second API endpoint returns a list of tracks with their track names. The data is from the Beatport API.
 
 #### Testing API Endpoint 2
 
-Test with `curl 127.0.0.1/api/v1/tracks/list` and receive a 200 response with names of tracks.
+Test with `curl 127.0.0.1/api/v1/tracks/` and receive a 200 response with names of tracks.
 
 ### API Endpoint 3 - GET /api/v1/tracks/<pk>
 

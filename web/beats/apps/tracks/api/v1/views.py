@@ -1,6 +1,4 @@
 """ API Views for Tracks app """
-import json
-
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -29,8 +27,9 @@ class TrackListAPI(APIView):
         filtered_data = []
         for track in full_results:
             filtered_data.append({'name': track['name']})
+
         return Response(
-            json.dumps(filtered_data), status=bp_response.status_code)
+            filtered_data, status=bp_response.status_code)
 
 
 class TrackDetailAPI(generics.RetrieveAPIView):

@@ -5,7 +5,7 @@ from .views import TrackListAPI, TrackDetailAPI, TrackUploadAPI
 
 
 urlpatterns = [
-    url(r'^list', TrackListAPI.as_view(), name='track-list'),
-    url(r'^upload', TrackUploadAPI.as_view(), name='track-upload'),
-    url(r'^(?P<pk>\d+)/$', TrackDetailAPI.as_view(), name='track-detail')
+    url(r'^(?P<pk>\d+)/$', TrackDetailAPI.as_view(), name='track-detail'),
+    url(r'^', TrackListAPI.as_view(), name='track-list'),
+    url(r'^upload', TrackUploadAPI.as_view(), name='track-upload')
 ]
