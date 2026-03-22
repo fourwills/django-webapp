@@ -1,4 +1,4 @@
-# beats web app
+# Django web app
 
 A basic [Django](https://www.djangoproject.com) web app that interfaces with the [Beatport API](https://oauth-api.beatport.com/).
 
